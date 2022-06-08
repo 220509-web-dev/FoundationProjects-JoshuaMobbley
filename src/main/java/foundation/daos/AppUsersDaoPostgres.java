@@ -55,6 +55,27 @@ public class AppUsersDaoPostgres implements AppUsersDAO {
         return null;
     }
 
+    public AppUsers getByUsername() {
+        try(Connection connection = ConnectionUtility.getConnection()) {
+            String sql = "select * from app_users where username = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString( 1, "username");
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                return new AppUsers(rs.getInt( "id"),
+                        rs.getString( "username"),
+                        rs.getString( "password"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Something went wrong with the database!");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     public List<AppUsers> getAllUsers() {
 
