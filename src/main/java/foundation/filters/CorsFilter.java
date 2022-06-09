@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 @WebFilter("/*")
-public class CustomFilter extends HttpFilter {
+public class CorsFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
        System.out.println("[LOG] - CustomFilter intercepted web request at " + LocalDateTime.now());
