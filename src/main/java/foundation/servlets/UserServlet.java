@@ -3,6 +3,7 @@ package foundation.servlets;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import foundation.daos.AppUsersDaoPostgres;
 import foundation.entities.AppUsers;
+import foundation.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,17 +18,18 @@ import java.util.List;
 public class UserServlet extends HttpServlet {
 
     private final ObjectMapper mapper;
+    private final UserService userService;
 
-    private final AppUsersDaoPostgres usersDAO;
-    public UserServlet(ObjectMapper mapper, AppUsersDaoPostgres usersDAO) {
+    public UserServlet(ObjectMapper mapper, UserService userService) {
         this.mapper = mapper;
-        this.usersDAO = usersDAO;
+        this.userService = userService;
     }
 
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AppUsersDaoPostgres usersDAO = null;
         List<AppUsers> user = (List<AppUsers>) usersDAO.getByUsername();
 
         String respPayload = mapper.writeValueAsString(user);
@@ -42,6 +44,11 @@ public class UserServlet extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         AppUsers newUsers = mapper.readValue(req.getInputStream(), AppUsers.class);
         System.out.println(newUsers);
+
+        AppUsers newUser = mapper.readValue(req.getInputStream(), AppUsers.class);
+        userService.createNewUser(newUser);
+        resp.setStatus(201);
+        resp.setContentType("application/json");
 
 
     }

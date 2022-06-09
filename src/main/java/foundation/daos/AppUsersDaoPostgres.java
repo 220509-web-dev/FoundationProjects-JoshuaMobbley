@@ -2,6 +2,7 @@ package foundation.daos;
 
 import foundation.entities.AppUsers;
 import foundation.utility.ConnectionUtility;
+import foundation.utility.exceptions.DataSourceException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -134,6 +135,24 @@ public class AppUsersDaoPostgres implements AppUsersDAO {
             exception.printStackTrace();
         }
 
+
+    }
+
+    public AppUsers save(AppUsers newUser) {
+        try (Connection conn = ConnectionUtility.getConnection()) {
+
+            String sql = "INSERT INTO app_users VALUES (default, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, newUser.getUsername());
+            ps.setString(2, newUser.getPassword());
+
+            ResultSet rs = ps.executeQuery();
+            newUser.setAppUsersId(rs.getInt("id"));
+            return newUser;
+
+        } catch (SQLException e) {
+            throw new DataSourceException("An error occurred during data access", e);
+        }
 
     }
 

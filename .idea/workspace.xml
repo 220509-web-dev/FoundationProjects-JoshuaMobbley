@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05e45949-0016-427f-b336-3316b34c5e38" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/foundation/filters/CustomFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foundation/servlets/AuthServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foundation/servlets/SanityServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foundation/servlets/UserServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foundation/utility/ContextLoaderListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/foundation/services/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/foundation/utility/exceptions/DataSourceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/foundation/utility/exceptions/InvalidRequestException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foundation/daos/AppUsersDaoPostgres.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foundation/daos/AppUsersDaoPostgres.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foundation/entities/AppUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foundation/entities/AppUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foundation/servlets/AuthServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foundation/servlets/AuthServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foundation/servlets/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foundation/servlets/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foundation/utility/ContextLoaderListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foundation/utility/ContextLoaderListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

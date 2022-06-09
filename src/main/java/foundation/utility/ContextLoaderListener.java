@@ -2,6 +2,8 @@ package foundation.utility;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import foundation.daos.AppUsersDaoPostgres;
+import foundation.services.UserService;
+import foundation.servlets.AuthServlet;
 import foundation.servlets.UserServlet;
 
 import javax.servlet.ServletContext;
@@ -17,10 +19,14 @@ public class ContextLoaderListener implements ServletContextListener {
 
         ObjectMapper mapper = new ObjectMapper();
         AppUsersDaoPostgres userDAO = new AppUsersDaoPostgres();
-        UserServlet userServlet = new UserServlet(mapper, userDAO);
+        UserService userService = new UserService(userDAO);
+        UserServlet userServlet = new UserServlet(mapper, userService);
+        AuthServlet authServlet = new AuthServlet(mapper);
 
         ServletContext context = sce.getServletContext();
         context.addServlet("UserServlet", userServlet).addMapping("/users");
+        context.addServlet("AuthServlet", authServlet).addMapping("/auth");
+
     }
 
     @Override
